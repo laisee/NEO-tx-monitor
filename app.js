@@ -13,7 +13,7 @@ const version = process.env.HEROKU_RELEASE_VERSION || 'Unknown Version';
 
 const deposit_address_list = addy.getAddressList('ltc');
 const LTC_TX_URL = "https://chain.so/api/v2/get_tx_received/LTC/";
-const update_url         = process.env.API_UPDATE_URL;
+const update_url = process.env.API_UPDATE_URL;
 
 // parse application/json
 app.use(bodyParser.json())
