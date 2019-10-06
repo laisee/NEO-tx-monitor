@@ -11,8 +11,8 @@ const port    = process.env.PORT || 8080;
 const name    = process.env.HEROKU_APP_NAME || 'Unknown Name';
 const version = process.env.HEROKU_RELEASE_VERSION || 'Unknown Version';
 
-const deposit_address_list = addy.getAddressList('ltc');
-const LTC_TX_URL = "https://chain.so/api/v2/get_tx_received/LTC/";
+const deposit_address_list = addy.getAddressList('neo');
+const NEO_TX_URL = "https://chain.so/api/v2/get_tx_received/NEO/";
 const update_url = process.env.API_UPDATE_URL;
 
 // parse application/json
@@ -27,7 +27,7 @@ app.get('/', function(req, res) {
 });
 
 //
-// Retrieve last transaction sent to pre-sale/sale LTC address
+// Retrieve last transaction sent to pre-sale/sale NEO address
 //
 app.post('/transaction/update', function(req, res) {
   const promises = [];
@@ -35,7 +35,7 @@ app.post('/transaction/update', function(req, res) {
   let count = 0;
   let total = 0;
   for (var address of deposit_address_list) {
-    const url = LTC_TX_URL + address;
+    const url = NEO_TX_URL + address;
     console.log("Checking address "+url);
     let options = { uri: url, json: true };
     promises.push(
@@ -48,7 +48,7 @@ app.post('/transaction/update', function(req, res) {
           data["tx_id"] = txn.txid;
           data["tx_hash"] = txn.script_hex;
           data["amount"] = txn.value;
-          data["currency"] = 'LTC';
+          data["currency"] = 'NEO';
           count++;
           total += txn.value;;
           request.post({ url: update_url, method: "POST", json: true, body: data },
@@ -77,10 +77,10 @@ app.post('/transaction/update', function(req, res) {
 });
 
 //
-// Retrieve total transactions sent to LTC address
+// Retrieve total transactions sent to NEO address
 //
 app.get('/transaction/total', function(req, res) {
-    const uri = "https://blockchain.info/balance/" + LTC_ADDR + "?format=json";
+    const uri = "https://blockchain.info/balance/" + NEO_ADDR + "?format=json";
     var options = { 
        uri: url,
        json: true
@@ -88,7 +88,7 @@ app.get('/transaction/total', function(req, res) {
     rp(options).then(function(body) {
         const total = body.result;
         const ts = +new Date()
-        res.json({"currency": "LTC","total": total, "timestamp": ts});
+        res.json({"currency": "NEO","total": total, "timestamp": ts});
     })
     .catch(function (err) {
         res.status(500);
