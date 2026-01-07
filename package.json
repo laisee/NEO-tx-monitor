@@ -2,17 +2,17 @@
   "name": "neomonitor",
   "version": "1.0.0",
   "main": "app.js",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "dependencies": {
-    "body-parser": "^2.2.1",
-    "express": "^5.2.1",
-    "lodash": "^4.17.21",
-    "request": "^2.88.2",
-    "request-promise": "^4.2.6"
+    "express": "^5.2.1"
   },
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "NEO cryptocurrency transaction monitor for Heroku"
 }
