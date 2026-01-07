@@ -1,1 +1,3 @@
 /node_modules
+# Note: dist is committed for Heroku deployment
+# If you want to build on Heroku, add a heroku-postbuild script instead
