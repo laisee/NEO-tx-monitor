@@ -1,5 +1,6 @@
 # NEO-tx-monitor
 [![NodeJS with Webpack](https://github.com/laisee/NEO-tx-monitor/actions/workflows/webpack.yml/badge.svg)](https://github.com/laisee/NEO-tx-monitor/actions/workflows/webpack.yml)
+[![Dependabot Updates](https://github.com/laisee/NEO-tx-monitor/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/laisee/NEO-tx-monitor/actions/workflows/dependabot/dependabot-updates)
 
 NEO(NEO) Transaction Monitor running in Heroku app           
 
